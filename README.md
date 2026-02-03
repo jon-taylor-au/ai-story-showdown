@@ -1,5 +1,5 @@
-###Responsible AI Governance Essentials
-##Challenge 1 Instructions: The AI Storyteller Showdown
+Responsible AI Governance Essentials
+Challenge 1 Instructions: The AI Storyteller Showdown
 
 Objective: 
 Teams will be asked to generate a fictional story on a topic of their choice using AI tools. Be imaginative! Submissions will need four inputs:
