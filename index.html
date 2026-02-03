@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>The AI Storyteller Showdown</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <main class="container">
+    <h1>The AI Storyteller Showdown</h1>
+
+    <img src="assets/cover.jpg" alt="AI-generated cover art" class="cover-image">
+
+    <p class="intro">
+      This story was generated using artificial intelligence.
+      Access requires interpretation.
+    </p>
+
+    <div class="gate">
+      <label for="answer">
+        What principle does this system prioritise?
+      </label>
+
+      <input type="text" id="answer" placeholder="Enter one word">
+
+      <button onclick="checkAnswer()">Proceed</button>
+
+      <p id="error" class="error"></p>
+    </div>
+  </main>
+
+  <script src="js/gate.js"></script>
+</body>
+</html>
