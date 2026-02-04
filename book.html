@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>The Weight of the Recommendation</title>
+  <link rel="stylesheet" href="css/book.css">
+</head>
+<body>
+
+<div class="scene">
+  <div class="book">
+
+    <!-- Front Cover -->
+    <div class="cover" onclick="openBook()">
+      <div class="cover-content">
+        <h1>The Weight of the Recommendation</h1>
+        <p class="subtitle">A speculative governance story</p>
+        <p class="hint">Click to open</p>
+      </div>
+    </div>
+
+    <!-- Inside Pages -->
+    <div class="pages">
+
+      <!-- Left Page -->
+      <div class="page left">
+        <h2>About This Story</h2>
+        <p>
+          AI-generated content.<br>
+          Human-designed prompts.<br>
+          Human-curated output.
+        </p>
+
+        <p class="small">
+          Created for the Responsible AI Governance
+          Storyteller Showdown.
+        </p>
+      </div>
+
+      <!-- Right Page -->
+      <div class="page right">
+        <iframe
+          src="story.html"
+          title="Story content">
+        </iframe>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+function openBook() {
+  document.querySelector('.book').classList.add('open');
+}
+</script>
+
+</body>
+</html>
