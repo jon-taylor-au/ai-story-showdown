@@ -18,7 +18,7 @@ body {
   align-items: center;
   justify-content: center;
   font-family: system-ui, -apple-system, Segoe UI, sans-serif;
-  color: #e6e8ee;
+  color: #111;
 }
 
 /* ---------- Scene ---------- */
@@ -26,27 +26,72 @@ body {
 .scene {
   width: 100vw;
   height: 100vh;
-  perspective: 2200px;
+  perspective: 2600px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-/* ---------- Book (real proportions) ---------- */
+/* ---------- Book ---------- */
 /*
-  Real open hardback:
-  - Width ≈ 1.8 × height
-  - Tall pages, generous margins
+  Target:
+  - Uses ~80–85% of viewport height
+  - Open-book ratio ≈ 1.9 : 1
 */
 
 .book {
-  width: min(92vw, 1200px);
-  height: min(82vh, 720px);
+  width: min(96vw, 1400px);
+  height: min(80vh, 740px);
   position: relative;
   transform-style: preserve-3d;
 }
 
+/* ---------- Pages (base) ---------- */
+
+.pages {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  background: #ddd;
+  border-radius: 6px;
+  overflow: hidden;
+
+  box-shadow:
+    0 25px 50px rgba(0,0,0,0.45),
+    inset 0 0 0 1px rgba(0,0,0,0.12);
+}
+
+/* ---------- Left Page (inside cover) ---------- */
+
+.page.left {
+  width: 50%;
+  padding: 3.5rem;
+  background: #f3f3f3;
+  color: #111;
+
+  box-shadow:
+    inset -10px 0 14px rgba(0,0,0,0.15);
+}
+
+/* ---------- Right Page (story page) ---------- */
+
+.page.right {
+  width: 50%;
+  padding: 3rem 3.5rem;
+  background: #ffffff;
+  color: #111;
+
+  box-shadow:
+    inset 10px 0 14px rgba(0,0,0,0.10);
+}
+
 /* ---------- Cover ---------- */
+/*
+  Cover opens like a real hardback:
+  - Rotates ~105°
+  - Remains visible
+  - Does NOT eclipse the left page
+*/
 
 .cover {
   position: absolute;
@@ -54,17 +99,24 @@ body {
   background: #1c2230;
   border-radius: 6px;
   transform-origin: left center;
-  transition: transform 1.1s ease;
+  transition: transform 1.2s ease;
   cursor: pointer;
   z-index: 3;
 
-  /* realism */
   box-shadow:
     0 20px 40px rgba(0,0,0,0.45),
-    inset -6px 0 8px rgba(0,0,0,0.25);
+    inset -6px 0 10px rgba(0,0,0,0.25);
 
   backface-visibility: hidden;
 }
+
+/* ---------- Open State ---------- */
+
+.book.open .cover {
+  transform: rotateY(-105deg) translateX(-6px);
+}
+
+/* ---------- Cover Content ---------- */
 
 .cover-content {
   height: 100%;
@@ -73,10 +125,11 @@ body {
   flex-direction: column;
   justify-content: center;
   text-align: center;
+  color: #e6e8ee;
 }
 
 .cover h1 {
-  font-size: 2.4rem;
+  font-size: 2.6rem;
   margin-bottom: 1rem;
 }
 
@@ -88,51 +141,6 @@ body {
 .hint {
   font-size: 0.9rem;
   opacity: 0.6;
-}
-
-/* ---------- Open State ---------- */
-/* IMPORTANT: never rotate past ~110deg */
-
-.book.open .cover {
-  transform: rotateY(-110deg);
-}
-
-/* ---------- Pages ---------- */
-
-.pages {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  background: #ddd;
-  border-radius: 6px;
-  overflow: hidden;
-
-  box-shadow:
-    inset 0 0 0 1px rgba(0,0,0,0.15);
-}
-
-/* ---------- Left Page (inside cover) ---------- */
-
-.page.left {
-  width: 40%;
-  padding: 3rem;
-  background: #f2f2f2;
-  color: #111;
-
-  box-shadow:
-    inset -8px 0 10px rgba(0,0,0,0.12);
-}
-
-/* ---------- Right Page (story) ---------- */
-
-.page.right {
-  width: 60%;
-  padding: 2.5rem 3rem;
-  background: #ffffff;
-  color: #111;
-
-  box-shadow:
-    inset 8px 0 10px rgba(0,0,0,0.08);
 }
 
 /* ---------- Text ---------- */
